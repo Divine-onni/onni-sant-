@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Circle</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="top-bar">
+        <p>News :Importance of stethoscope</p>
+        <div class="top-links">
+            <a href="#">About us</a>
+            <a href="#"> Call us</a>
+            <a href="#"></i> Careers</a>
+            <a href="#"></i> Blog</a>
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <header class="header">
+        <!-- Contact info section (en haut) -->
+        <div class="contact-info">
+            <div><strong><i class="fas fa-phone-alt"></i> Emergency 24 Hours</strong><br><br>+242 065648283</div>
+            <div><strong><i class="fas fa-envelope"></i> Envoyez nous un mail</strong><br><br>princiliaonani@gmail.com
+            </div>
+            <div><strong><i class="fas fa-map-marker-alt"></i> Location</strong><br><br>Brazzaville</div>
+            <div><strong><i class="fas fa-clock"></i> Heure de travail</strong><br><br>Mon -sun 0:00 -19:00</div>
+        </div>
+
+        <!-- Logo section (en bas) -->
+        <!-- Conteneur général du header -->
+        <div class="header-container">
+            <!-- Logo section (en bas) -->
+            <div class="logo">
+                <h1>ONNI <span> <i class="fas fa-heartbeat"></i></span></h1><br>
+            </div>
+
+
+            <nav class="menu">
+                <button class="menu-toggle" aria-label="Open Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="but">
+                    <li><a href="index.html" id="home">Home</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="departement.html">Departement</a></li>
+                    <li><a href="faq.html">FaQ</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="docteur.html" class="btn">Docteurs</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <section class="hero">
+        <div class="overlay">
+            <h2>LA SANTE N'A PAS DE PRIX</h2>
+            <div class="hero-buttons">
+                <a href="conseil.html" class="btn">Conseil</a>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="services">
+        <div class="service-box">
+            <img src="doc (2).jpg" alt="">
+            <h3>Experience Docteurs</h3>
+            <p>Nous diagnostiquons et traitons les maladies cardiovasculaires comme l'hypertension, les infarctus et
+                les troubles
+                du rythme cardiaque.Nos experiences en soins intensifs nous permet de réagir rapidement face à des
+                urgences cardiaques. </p>
+
+        </div>
+
+        <div class="service-box1">
+            <img src="doc (3).jpg" alt="">
+            <h3>Experience Docteurs</h3>
+            <p>Spécialié dans les maladies de la peau, nos traitons des cas variés allant de l'acné aux infections
+                cutanées complexes.
+                Nous utilisons aussi des techniques esthétiques pour améliorer la qualité de la peau de nos
+                patients.
+            </p>
+
+        </div>
+
+        <div class="service-box2">
+            <img src="doc (4).jpg" alt="">
+            <h3>Experience Docteurs</h3>
+            <p>Nous accompagnons les femmes durant leur grossesse, accouchement et suivi postnatal. Graçe à nos
+                expertises, nous detectons précocement les complications comme les grossesses à risque ou les
+                infections, assurant la sécurité de la mère et de l'enfant</p>
+
+        </div>
+
+
+    </section>
+    <section class="foot">
+        <footer>
+            <div class="foot-cent">
+                <div class="icon">
+
+                    <ul>
+                        <li> <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i> Facebook :
+                                @MedicalCircleCG</a></li>
+                        <li><a href="https://twitter.com/"></a><i class="fab fa-twitter"></i> Twitter :
+                            @MedCircle_CG</a></li>
+                        <li><a href="https://www.instagram.com/"></a><i class="fab fa-instagram"></i> Instagram
+                            :
+                            @medical_circle</a></li>
+                    </ul>
+                </div>
+                <div class="nv">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Service</a></li>
+                        <li><a href="#departement">Departement</a></li>
+
+                    </ul>
+
+                </div>
+
+                <div class="nv1">
+                    <li><a href="#faq">FaQ</a></li>
+                    <a href="contact.html" class="cta-button">contact</a>
+                    <li><a href="#">consultation</a></li>
+
+                </div>
+
+            </div>
+        </footer>
+    </section>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menuList = document.querySelector('.menu ul');
+
+        menuToggle.addEventListener('click', () => {
+            menuList.classList.toggle('show');
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
