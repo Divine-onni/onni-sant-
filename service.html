@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* CONTAINER PRINCIPAL SERVICES */
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+            padding: 40px 20px;
+            border-radius: 10px;
+            max-width: 1500px;
+            margin: 0 auto;
+           
+            overflow: hidden;
+        }
+
+        .services-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* TEXTE */
+        .services-text {
+            flex: 1;
+            min-width: 300px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .services-text h2 {
+            font-size: 28px;
+            color: #007b83;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+
+        }
+
+        .services-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #007b83, #00a8b5);
+            animation: underlineExpand 2s ease-out 0.5s forwards;
+            text-align: center;
+        }
+
+        .services-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .services-text p:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .services-text p:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .services-text p:nth-child(5) {
+            animation-delay: 0.6s;
+        }
+
+
+
+
+
+        /* CARDS SERVICES */
+        .services-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 45px;
+            margin-top: 40px;
+            padding: 20px 70px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 123, 131, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 123, 131, 0.2);
+        }
+
+        .service-card.animate-in {
+            animation: cardSlideIn 0.8s ease-out forwards;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #007b83, #00a8b5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 35px;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .service-card:hover .service-icon::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(360deg);
+        }
+
+        .service-card h3 {
+            color: #007b83;
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* FLOATING ELEMENTS */
+        .floating-icon {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(0, 123, 131, 0.3);
+            animation: float 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 20%;
+            right: 8%;
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 15%;
+            left: 10%;
+            animation-delay: 2s;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes underlineExpand {
+            to {
+                width: 60px;
+            }
+        }
+
+        @keyframes cardSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 768px) {
+            .services-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 15px;
+            }
+
+            .services-image {
+                margin-top: 20px;
+            }
+
+            .services-cards {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card {
+                padding: 25px;
+            }
+
+            .services-text h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* PROGRESS BAR */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #007b83, #00a8b5);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <p>News :Importance of stethoscope</p>
+        <div class="top-links">
+            <a href="#">About Us</a>
+            <a href="#"> Contact Us</a>
+            <a href="#"></i> Careers</a>
+            <a href="#"></i> Blog</a>
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <header class="header">
+        <!-- Contact info section (en haut) -->
+        <div class="contact-info">
+            <div><strong><i class="fas fa-phone-alt"></i> Emergency 24 Hours</strong><br><br>+242 065648283</div>
+            <div><strong><i class="fas fa-envelope"></i> Send us a mail</strong><br><br>princiliaonani@gmail.com</div>
+            <div><strong><i class="fas fa-map-marker-alt"></i> Our location</strong><br><br>Brazzaville</div>
+            <div><strong><i class="fas fa-clock"></i> Working Hours</strong><br><br>Mon -sun 0:00 -19:00</div>
+        </div>
+
+        <!-- Logo section (en bas) -->
+        <!-- Conteneur général du header -->
+        <div class="header-container">
+            <!-- Logo section (en bas) -->
+            <div class="logo">
+                 <h1>ONNI <span> <i class="fas fa-heartbeat"></i></span></h1><br>
+
+            </div>
+
+            
+            <nav class="menu">
+                <button class="menu-toggle" aria-label="Open Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="but">
+                    <li><a href="index.html" id="home">Home</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="departement.html">Departement</a></li>
+                    <li><a href="faq.html">FaQ</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="docteur.html" class="btn">Docteurs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <section id="services">
+        <div class="services-container">
+
+
+            <div class="services-text">
+                <center>
+                    <h2>Nos Services Médicaux</h2>
+                </center>
+
+
+
+                <!-- Cards des services -->
+                <div class="services-cards">
+                    <div class="service-card" data-delay="0">
+                        <div class="service-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h3>Consultation Générale</h3>
+                        <p>Consultations médicales complètes avec nos médecins généralistes expérimentés pour
+                            tous vos besoins de santé quotidiens.</p>
+                    </div>
+
+                    <div class="service-card" data-delay="100">
+                        <div class="service-icon">
+                            <i class="fas fa-ambulance"></i>
+                        </div>
+                        <h3>Urgences 24h/24</h3>
+                        <p>Service d'urgence disponible 24 heures sur 24 pour toute situation médicale
+                            nécessitant une intervention rapide.</p>
+                    </div>
+
+                    <div class="service-card" data-delay="200">
+                        <div class="service-icon">
+                           <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Cardiologie</h3>
+                        <p>Spécialistes en cardiologie pour le diagnostic et traitement des maladies
+                            cardiovasculaires avec équipements modernes.</p>
+                    </div>
+
+                    <div class="service-card" data-delay="300">
+                        <div class="service-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Ophtalmologie</h3>
+                        <p>Soins oculaires complets, examens de la vue, traitements des pathologies oculaires et
+                            chirurgie ophtalmique.</p>
+                    </div>
+
+                    <div class="service-card" data-delay="400">
+                        <div class="service-icon">
+                            <i class="fas fa-x-ray"></i>
+                        </div>
+                        <h3>Radiologie</h3>
+                        <p>Imagerie médicale avancée avec équipements de dernière génération pour un diagnostic
+                            précis et rapide.</p>
+                    </div>
+
+                    <div class="service-card" data-delay="500">
+                        <div class="service-icon">
+                            <i class="fas fa-syringe"></i>
+                        </div>
+                        <h3>Vaccination</h3>
+                        <p>Programme complet de vaccination pour enfants et adultes, incluant les vaccins de
+                            routine et spécialisés.</p>
+                    </div>
+                </div>
+    </section>
+
+
+    <script>
+        // VARIABLES GLOBALES
+        let isScrolling = false;
+        let cards;
+
+        // INITIALISATION DES VARIABLES APRÈS CHARGEMENT DU DOM
+        document.addEventListener('DOMContentLoaded', function () {
+            cards = document.querySelectorAll('.service-card');
+
+
+            // Initialisation des fonctionnalités
+            initializeAnimations();
+        });
+
+        // FONCTION D'INITIALISATION
+        function initializeAnimations() {
+            // INTERSECTION OBSERVER POUR ANIMATIONS
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const card = entry.target;
+                        const delay = parseInt(card.dataset.delay) || 0;
+
+                        setTimeout(() => {
+                            card.classList.add('animate-in');
+                        }, delay);
+                    }
+                });
+            }, observerOptions);
+
+            // OBSERVER POUR CARTES
+            if (cards && cards.length > 0) {
+                cards.forEach(card => {
+                    observer.observe(card);
+                });
+            }
+
+            // CONFIGURATION DES EVENT LISTENERS
+            enhanceCardHover();
+            animateTitle();
+
+            // Création périodique de particules
+            setInterval(createParticle, 2000);
+        }
+
+        // BARRE DE PROGRESSION
+
+
+        // SMOOTH SCROLL AVEC PARALLAX
+
+
+        // EFFET HOVER AVANCÉ POUR CARTES
+        function enhanceCardHover() {
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    // Effet de pulsation sur l'icône
+                    const icon = this.querySelector('.service-icon');
+                    icon.style.animation = 'pulse 0.6s ease-in-out';
+
+                    // Légère rotation de la carte
+                    this.style.transform = 'translateY(-10px) rotateY(2deg)';
+
+                    // Effet de lueur
+                    this.style.boxShadow = '0 20px 40px rgba(0, 123, 131, 0.3), 0 0 20px rgba(0, 123, 131, 0.1)';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    const icon = this.querySelector('.service-icon');
+                    icon.style.animation = '';
+                    this.style.transform = 'translateY(0) rotateY(0deg)';
+                    this.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.08)';
+                });
+
+                // Effet de clic
+                card.addEventListener('click', function () {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-10px) rotateY(2deg)';
+                    }, 150);
+                });
+            });
+        }
+
+        // ANIMATION DU TITRE
+        function animateTitle() {
+            const title = document.querySelector('.services-text h2');
+            const text = title.textContent;
+            title.textContent = '';
+
+            [...text].forEach((char, index) => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.style.opacity = '0';
+                span.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s forwards`;
+                title.appendChild(span);
+            });
+        }
+
+        // GESTION DES ÉVÉNEMENTS
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', () => {
+            enhanceCardHover();
+            animateTitle();
+
+            // Création périodique de particules
+            setInterval(createParticle, 2000);
+        });
+
+        // AJOUT DE STYLES D'ANIMATION DYNAMIQUES
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleFloat {
+                0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+                20% { opacity: 0.7; }
+                80% { opacity: 0.7; }
+                100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // PERFORMANCE OPTIMIZATION
+        let ticking = false;
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateProgressBar);
+                ticking = true;
+            }
+        }
+
+        // EASTER EGG - Triple clic sur le titre
+        let clickCount = 0;
+        document.querySelector('.services-text h2').addEventListener('click', function () {
+            clickCount++;
+            if (clickCount === 3) {
+                this.style.background = 'linear-gradient(45deg, #ff6b6b, #ee5a24)';
+                this.style.webkitBackgroundClip = 'text';
+                this.style.webkitTextFillColor = 'transparent';
+                this.style.animation = 'pulse 2s infinite';
+
+                // Explosion de particules
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(createParticle, i * 100);
+                }
+
+                clickCount = 0;
+            }
+
+            setTimeout(() => clickCount = 0, 2000);
+        });
+
+        console.log('🏥 Medical Circle Services - Chargé avec succès!');
+        console.log('✨ Animations JavaScript actives');
+        console.log('🎯 Triple-cliquez sur le titre pour un easter egg!');
+    </script>
+
+
+    <section class="foot">
+        <footer>
+            <div class="foot-cent">
+                <div class="icon">
+
+                    <ul>
+                        <li> <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i> Facebook :
+                                @MedicalCircleCG</a></li>
+                        <li><a href="https://twitter.com/"></a><i class="fab fa-twitter"></i> Twitter :
+                            @MedCircle_CG</a></li>
+                        <li><a href="https://www.instagram.com/"></a><i class="fab fa-instagram"></i> Instagram
+                            :
+                            @medical_circle</a></li>
+                    </ul>
+                </div>
+                <div class="nv">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Service</a></li>
+                        <li><a href="#departement">Departement</a></li>
+
+                    </ul>
+
+                </div>
+
+                <div class="nv1">
+                    <li><a href="#faq">FaQ</a></li>
+                    <a href="contact.html" class="cta-button">contact</a>
+                    <li><a href="#">consultation</a></li>
+
+                </div>
+
+            </div>
+        </footer>
+    </section>
+    <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuList = document.querySelector('.menu ul');
+
+    menuToggle.addEventListener('click', () => {
+        menuList.classList.toggle('show');
+    });
+</script>
+
+
+
+
+</body>
+
+</html>

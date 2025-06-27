@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Filtres de galerie */
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .gallery-filter a {
+            margin: 0 10px 10px;
+            padding: 8px 15px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #ddd;
+            transition: all 0.3s;
+        }
+
+        .gallery-filter a:hover,
+        .gallery-filter a.active {
+            background-color: #01484e;
+            /* Orange */
+            color: white;
+            border-color: #01484e;
+        }
+
+        /* Grille de galerie */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .gallery-grid3 {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .gallery-grid3 .desc {
+            position: relative;
+            width: 35%;
+            justify-content: center;
+            align-items: center;
+            padding-left: 20px;
+            margin-left: 30px;
+
+
+        }
+
+        .desc span {
+
+            font-weight: bolder;
+            font-size: 2em;
+        }
+
+        .gallery-item3 {
+            height: 500px;
+            width: 50%;
+            position: relative;
+            margin-right: 60px;
+
+        }
+
+
+
+        .gallery-grid1 {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .gallery-grid1 .desc1 {
+            position: relative;
+            width: 35%;
+            justify-content: center;
+            align-items: center;
+            padding-left: 20px;
+            margin-left: 30px;
+
+
+        }
+
+        .desc1 span {
+
+            font-weight: bolder;
+            font-size: 2em;
+        }
+
+        .gallery-item1 {
+           height: 500px;
+            width: 50%;
+            position: relative;
+            margin-right: 60px;
+
+        }
+
+
+        .gallery-grid2 {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .gallery-grid2 .desc2 {
+            position: relative;
+            width: 35%;
+            justify-content: center;
+            align-items: center;
+            padding-left: 20px;
+            margin-left: 30px;
+
+
+        }
+
+        .desc2 span {
+
+            font-weight: bolder;
+            font-size: 2em;
+        }
+
+        .gallery-item2 {
+           height: 500px;
+            width: 50%;
+            position: relative;
+            margin-right: 60px;
+
+        }
+
+
+        .gallery-grid4 {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .gallery-grid4 .desc4 {
+            position: relative;
+            width: 35%;
+            justify-content: center;
+            align-items: center;
+            padding-left: 20px;
+            margin-left: 30px;
+
+
+        }
+
+        .desc4 span {
+
+            font-weight: bolder;
+            font-size: 2em;
+        }
+
+        .gallery-item4 {
+            height: 500px;
+            width: 50%;
+            position: relative;
+            margin-right: 60px;
+
+        }
+
+
+
+
+
+
+        .page-title {
+            text-align: center;
+        }
+
+        .gallery-item {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        /* Sections de page */
+        .page-section {
+            padding: 50px 0;
+            width: 100vw;
+        }
+
+
+
+
+
+
+        @media (max-width: 768px) {
+
+            .gallery-grid1,
+            .gallery-grid2,
+            .gallery-grid3,
+            .gallery-grid4 {
+                flex-direction: column;
+                align-items: center;
+               
+            }
+
+            .gallery-grid1 .desc1,
+            .gallery-grid2 .desc2,
+            .gallery-grid3 .desc,
+            .gallery-grid4 .desc4,
+            .gallery-item1,
+            .gallery-item2,
+            .gallery-item3,
+            .gallery-item4 {
+                width: 100% !important;
+                margin: 0 auto 20px;
+                
+            }
+
+            .gallery-item1,
+            .gallery-item2,
+            .gallery-item3,
+            .gallery-item4 {
+                height: 450px;
+                width: 100%;
+            }
+
+            .desc1 span,
+            .desc2 span,
+            .desc4 span,
+            .desc span {
+                font-size: 1em;
+            }
+
+            .gallery-filter {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .gallery-filter a {
+                margin: 5px 0;
+                width: 80%;
+                text-align: center;
+            }
+        }
+
+       
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <p>News :Importance of stethoscope</p>
+        <div class="top-links">
+            <a href="#">About Us</a>
+            <a href="contact.html"> Contact Us</a>
+            <a href="#"></i> Careers</a>
+            <a href="#"></i> Blog</a>
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <header class="header">
+        <!-- Contact info section (en haut) -->
+        <div class="contact-info">
+            <div><strong><i class="fas fa-phone-alt"></i> Emergency 24 Hours</strong><br><br>+242 065648283</div>
+            <div><strong><i class="fas fa-envelope"></i> Send us a mail</strong><br><br>princiliaonani@gmail.com</div>
+            <div><strong><i class="fas fa-map-marker-alt"></i> Our location</strong><br><br>Brazzaville</div>
+            <div><strong><i class="fas fa-clock"></i> Working Hours</strong><br><br>Mon -sun 0:00 -19:00</div>
+        </div>
+
+        <!-- Logo section (en bas) -->
+        <!-- Conteneur général du header -->
+        <div class="header-container">
+            <!-- Logo section (en bas) -->
+            <div class="logo">
+                <h1>ONNI <span> <i class="fas fa-heartbeat"></i></span></h1><br>
+
+            </div>
+
+
+            <nav class="menu">
+                <button class="menu-toggle" aria-label="Open Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="but">
+                    <li><a href="index.html" id="home">Home</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="departement.html">Departement</a></li>
+                    <li><a href="faq.html">FaQ</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="docteur.html" class="btn">Docteurs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenu de la page Galerie -->
+    <div id="gallery" class="page-section container">
+        <center>
+            <h1 class="page-title">CONSEIL & bien etre <i class="fa-solid fa-hand-holding-medical flex-shrink-0"></i>
+            </h1>
+        </center>
+
+        <div class="gallery-filter">
+            <a href="#gallery" class="active">Tout voir</a>
+            <a href="#gallery-home">Avoir un beau teint</a>
+            <a href="#gallery-interior">plante guerrisseur</a>
+            <a href="#gallery-modern">Gardé sa forme</a>
+            <a href="#gallery-office">Mère et enfant</a>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" style="background-image: url('style10/1.jpg'); background-size:cover; background-position:center; background-repeat:no repeat;"></div>
+            <div class="gallery-item" style="background-image: url('style10/aleo2.jpeg'); background-size:cover; background-position:center; background-repeat:no repeat;"></div>
+            <div class="gallery-item" style="background-image: url('style10/mère2.jpeg'); background-size:cover; background-position:center; background-repeat:no repeat;"></div>
+            <div class="gallery-item" style="background-image: url('style10/2.jpg')"></div>
+
+            <div class="gallery-item" style="background-image: url('style10/mère1.jpeg'); background-size:cover; background-position:center; background-repeat:no repeat;"></div>
+            <div class="gallery-item" style="background-image: url('style10/lamonthe3.jpeg'); background-size:cover; background-position:center; background-repeat:no repeat;"></div>
+            <div class="gallery-item" style="background-image: url('style10/gimgembre3.jpeg'); background-size:cover; background-position:center; background-repeat:no repeat;"></div>
+            <div class="gallery-item" style="background-image: url('style10/teint4.jpeg'); background-size:cover; background-position:center; background-repeat:no repeat;"></div>
+            <div class="gallery-item" style="background-image: url('style10/curcu3.jpeg'); background-size:cover; background-repeat:no repeat;"></div>
+
+
+            <div class="gallery-item" style="background-image: url('style10/mère3.jpeg'); background-size:cover; background-position:center; background-repeat:no repeat;"></div>
+
+
+        </div>
+    </div>
+
+    <!-- Contenu filtré de la galerie -->
+    <div id="gallery-home" class="page-section container">
+
+        <h1 class="page-title">Avoir un beau teint</h1>
+        <div class="gallery-filter">
+            <a href="#gallery-home">Tout voir</a>
+            <a href="#gallery-interior">plante guerrisseur</a>
+            <a href="#gallery-modern">Gardé sa forme</a>
+            <a href="#gallery-office">Mère et enfant</a>
+        </div>
+        <div class="gallery-grid1">
+            <div class="desc1">
+                <h2>Beauté Naturelle - Obtenir un Teint Éclatant</h2>
+                <p> <span> A</span>voir un teint éclatant sans maquillage est possible grâce à des gestes simples à
+                    intégrer dans votre routine quotidienne. Tout d’abord, une bonne hydratation est essentielle : boire
+                    au moins 1,5L d’eau par jour et utiliser des crèmes naturelles adaptées à votre type de peau
+                    favorisent un teint lumineux. Ensuite, privilégiez un nettoyage doux avec des produits comme
+                    l’hydrolat de rose ou de lavande, qui nettoient sans agresser la peau.
+                    L’alimentation joue également un rôle crucial. Consommez des fruits et légumes riches en
+                    antioxydants tels que les carottes, mangues et fruits rouges, qui aident à préserver l’éclat de la
+                    peau. Protégez votre peau des rayons UV en utilisant une crème solaire adaptée. Enfin, adoptez une
+                    bonne hygiène de vie en pratiquant une activité physique régulière, en dormant suffisamment et en
+                    gérant votre stress quotidien.
+
+                </p>
+            </div>
+            <div class="gallery-item1" style="background-image: url('style10/teint3.jpeg'); background-size:cover; background-repeat:no repeat;"></div>
+        </div>
+    </div>
+
+    <div id="gallery-interior" class="page-section container">
+        <h1 class="page-title">Plantes guerrisseur</h1>
+        <div class="gallery-filter">
+            <a href="#gallery">tout voir</a>
+            <a href="#gallery-interior">Avoir un beau teint</a>
+            <a href="#gallery-modern">Gardé sa forme</a>
+            <a href="#gallery-office">Mère et enfant</a>
+        </div>
+        <div class="gallery-grid4">
+            <div class="desc4">
+                <h2>Les Plantes Guérisseuses(Gingembre)
+                </h2>
+                <p><span>L</span>e gingembre est reconnu pour ses propriétés anti-inflammatoires, antioxydantes,
+                    antibactériennes, digestives et immunostimulantes. Il est particulièrement efficace pour soulager
+                    les douleurs articulaires et les rhumatismes, réduire les nausées (mal des transports, grossesse),
+                    améliorer la digestion en cas de ballonnements et de gaz, lutter contre la fatigue passagère et
+                    apaiser les symptômes des rhumes et maux de gorge.
+                    Recette : Préparez une infusion de gingembre, citron et miel pour renforcer votre système
+                    immunitaire et soulager les premiers symptômes de rhume.
+                </p>
+            </div>
+            <div class="gallery-item4" style="background-image: url('style10/gimgembre4.jpeg'); background-size:cover; background-position:center; background-repeat:no repeat;"></div>
+        </div>
+    </div>
+
+    <div id="gallery-modern" class="page-section container">
+        <h1 class="page-title">Gardé sa forme</h1>
+        <div class="gallery-filter">
+            <a href="#gallery">Tout voir</a>
+            <a href="#gallery-home">Avoir un beau teint</a>
+            <a href="#gallery-modern">plantes Guérrisseur</a>
+            <a href="#gallery-office">Mère et enfant</a>
+        </div>
+        <div class="gallery-grid3">
+
+            <div class="desc">
+                <h2>Tu veux gardé ta forme Physique?</h2>
+                <p> <span>M</span> aintenir sa forme physique ne nécessite pas de sacrifices extrêmes, mais plutôt
+                    quelques habitudes saines et constantes. Une alimentation équilibrée constitue la base : composez
+                    vos repas avec 50% de légumes, 25% de protéines (viandes blanches, poissons, œufs, légumineuses) et
+                    25% de féculents complets.
+                    L’activité physique régulière est également primordiale. Même 20 minutes de marche, de danse ou de
+                    vélo par jour suffisent à activer le métabolisme et à entretenir la forme. Le sommeil joue un rôle
+                    crucial : viser 7 à 8 heures de sommeil par nuit permet au corps de se régénérer et favorise le
+                    bien-être global.
+                    La gestion du stress est tout aussi importante. Pratiquez des activités relaxantes telles que la
+                    méditation, les exercices de respiration ou des loisirs qui vous détendent. Ces pratiques aident à
+                    maintenir un équilibre mental et physique.
+                </p>
+            </div>
+            <div class="gallery-item3" style="background-image: url('style10/3.jpg'); background-size:cover; background-position:center; background-repeat:no repeat;"></div>
+
+        </div>
+    </div>
+
+    <div id="gallery-office" class="page-section container">
+        <h1 class="page-title">Mère et enfant</h1>
+        <div class="gallery-filter">
+            <a href="#gallery">tout voir</a>
+            <a href="#gallery-home">Avoir un beau teint</a>
+            <a href="#gallery-interior">Plantes guérrisseur</a>
+            <a href="#gallery-modern">Gardé sa forme</a>
+        </div>
+        <div class="gallery-grid2">
+            <div class="desc2">
+                <h2>Mère et enfant:</h2>
+                <p>
+                    Beaucoup de mères se demandent si leur bébé fait des caprices. En réalité, la majorité des
+                    comportements considérés comme des "caprices" sont souvent des façons pour le bébé d’exprimer un
+                    besoin ou une émotion. Par exemple, les pleurs ne sont pas un moyen de manipulation, mais la seule
+                    manière pour un bébé de communiquer. Il peut pleurer parce qu’il a faim, qu’il est fatigué, qu’il se
+                    sent seul ou simplement parce qu’il a besoin d’être rassuré. De même, lorsqu’un bébé refuse de
+                    dormir seul, cela traduit souvent un besoin de proximité, pas un caprice.
+                    En résumé, un bébé ne fait pas de caprices au sens où on l'entend chez les adultes. Il communique
+                    ses besoins comme il le peut. Le rôle de la mère est de l’écouter, de l’observer et de répondre avec
+                    amour, douceur et cohérence. L’éducation commence dès les premiers mois, mais elle doit toujours
+                    être guidée par la bienveillance et la patience.
+
+
+                </p>
+            </div>
+            <div class="gallery-item2" style="background-image: url('style10/mère4.jpeg'); background-size:cover; background-position:center; background-repeat:no repeat;"></div>
+        </div>
+    </div>
+
+
+
+    <a href="#" class="back-to-top">↑</a>
+
+    <script>
+        // Script pour le menu mobile
+        document.querySelector('.mobile-toggle').addEventListener('click', function () {
+            document.querySelector('.menu').classList.toggle('active');
+        });
+
+        // Script pour les filtres de galerie
+        document.querySelectorAll('.gallery-filter a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                let activeLinks = document.querySelectorAll('.gallery-filter a.active');
+                activeLinks.forEach(function (activeLink) {
+                    activeLink.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+
+<section class="foot">
+    <footer>
+        <div class="foot-cent">
+            <div class="icon">
+
+                <ul>
+                    <li> <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i> Facebook :
+                            @MedicalCircleCG</a></li>
+                    <li><a href="https://twitter.com/"></a><i class="fab fa-twitter"></i> Twitter :
+                        @MedCircle_CG</a></li>
+                    <li><a href="https://www.instagram.com/"></a><i class="fab fa-instagram"></i> Instagram
+                        :
+                        @medical_circle</a></li>
+                </ul>
+            </div>
+            <div class="nv">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Service</a></li>
+                    <li><a href="#departement">Departement</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="nv1">
+                <li><a href="#faq">FaQ</a></li>
+                <a href="contact.html" class="cta-button">contact</a>
+                <li><a href="#">consultation</a></li>
+
+            </div>
+
+        </div>
+    </footer>
+</section>
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuList = document.querySelector('.menu ul');
+
+    menuToggle.addEventListener('click', () => {
+        menuList.classList.toggle('show');
+    });
+</script>
+
+
+
+
+</body>
+
+</html>

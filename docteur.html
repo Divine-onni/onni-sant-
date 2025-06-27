@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <p>News :Importance of stethoscope</p>
+        <div class="top-links">
+            <a href="#">About Us</a>
+            <a href="#"> Contact Us</a>
+            <a href="#"></i> Careers</a>
+            <a href="#"></i> Blog</a>
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <header class="header">
+        <!-- Contact info section (en haut) -->
+        <div class="contact-info">
+            <div><strong><i class="fas fa-phone-alt"></i> Emergency 24 Hours</strong><br><br>+242 065648283</div>
+            <div><strong><i class="fas fa-envelope"></i> Send us a mail</strong><br><br>princiliaonani@gmail.com</div>
+            <div><strong><i class="fas fa-map-marker-alt"></i> Our location</strong><br><br>Brazzaville</div>
+            <div><strong><i class="fas fa-clock"></i> Working Hours</strong><br><br>Mon -sun 0:00 -19:00</div>
+        </div>
+
+        <!-- Logo section (en bas) -->
+        <!-- Conteneur général du header -->
+        <div class="header-container">
+            <!-- Logo section (en bas) -->
+            <div class="logo">
+                 <h1>ONNI <span> <i class="fas fa-heartbeat"></i></span></h1><br>
+
+            </div>
+
+            
+            <nav class="menu">
+                <button class="menu-toggle" aria-label="Open Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="but">
+                    <li><a href="index.html" id="home">Home</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="departement.html">Departement</a></li>
+                    <li><a href="faq.html">FaQ</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="docteur.html" class="btn">Docteurs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+     <section id="docteurs">
+                <div class="container-doc">
+                    <div class="text-doc">
+                        <h1>Docteurs</h1>
+                    </div>
+
+
+                    <div class="docteurs">
+
+                        <div class="card">
+
+                            <img src="doctors-1.jpg" alt="">
+                            <h1>Walter Black</h1><br>
+                            Docteur principal
+                        </div>
+                        <div class="card">
+
+                            <img src="doctors-2.jpg" alt="">
+                            <h1>Berenice Gramik</h1><br>
+                            Anesthesiste
+                        </div>
+                        <div class="card">
+
+                            <img src="doctors-3.jpg" alt="">
+                            <h1>Wilson ANderson</h1><br>
+                            Cardiologue
+                        </div>
+                        <div class="card">
+
+                            <img src="doctors-4.jpg" alt="">
+                            <h1>Julia FRANIL</h1><br>
+                            gynecolgue
+                        </div>
+
+                         <div class="card">
+
+                            <img src="faq.jpg" alt="">
+                            <h1>Divine Onni</h1><br>
+                            gynecolgue
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </section>
+
+
+
+
+
+           
+    <section class="foot">
+        <footer>
+            <div class="foot-cent">
+                <div class="icon">
+
+                    <ul>
+                        <li> <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i> Facebook :
+                                @MedicalCircleCG</a></li>
+                        <li><a href="https://twitter.com/"></a><i class="fab fa-twitter"></i> Twitter :
+                            @MedCircle_CG</a></li>
+                        <li><a href="https://www.instagram.com/"></a><i class="fab fa-instagram"></i> Instagram
+                            :
+                            @medical_circle</a></li>
+                    </ul>
+                </div>
+                <div class="nv">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Service</a></li>
+                        <li><a href="#departement">Departement</a></li>
+
+                    </ul>
+
+                </div>
+
+                <div class="nv1">
+                    <li><a href="#faq">FaQ</a></li>
+                    <a href="contact.html" class="cta-button">contact</a>
+                    <li><a href="#">consultation</a></li>
+
+                </div>
+
+            </div>
+        </footer>
+    </section>
+    <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuList = document.querySelector('.menu ul');
+
+    menuToggle.addEventListener('click', () => {
+        menuList.classList.toggle('show');
+    });
+</script>
+
+
+
+
+</body>
+
+</html>

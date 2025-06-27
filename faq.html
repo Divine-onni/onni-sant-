@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        #faq {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 0;
+
+        }
+
+        .faq-container {
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            align-items: start;
+            margin-top: -30px;
+
+            backdrop-filter: blur(20px);
+            border-radius: 10px;
+            padding: 60px;
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .faq-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+
+            background-size: 200% 100%;
+
+        }
+
+
+
+        .faq-text h2 {
+            color: #007b83;
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInFade 0.8s ease-out forwards;
+        }
+
+        .faq-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #007b83, #00a8b5);
+            border-radius: 2px;
+        }
+
+        .faq-description {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            color: #555;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInFade 0.8s ease-out 0.2s forwards;
+        }
+
+        .faq-items {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 123, 131, 0.1);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideInLeft 0.6s ease-out forwards;
+        }
+
+        .faq-item:nth-child(1) {
+            animation-delay: 0.4s;
+        }
+
+        .faq-item:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .faq-item:nth-child(3) {
+            animation-delay: 0.8s;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 123, 131, 0.15);
+            border-color: rgba(0, 123, 131, 0.3);
+        }
+
+        .faq-question {
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #333;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-question::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #007b83, #00a8b5);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::before,
+        .faq-question:hover::before {
+            transform: scaleY(1);
+        }
+
+        .faq-question:hover {
+            color: #007b83;
+            padding-left: 32px;
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #007b83, #00a8b5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            background: linear-gradient(135deg, #00a8b5, #007b83);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        .faq-answer-content {
+            padding: 0 24px 24px 24px;
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+            transform: translateY(-10px);
+            transition: transform 0.3s ease 0.1s;
+        }
+
+        .faq-item.active .faq-answer-content {
+            transform: translateY(0);
+        }
+
+        .faq-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .faq-image img {
+            max-width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: scale(0.9) rotateY(15deg);
+            animation: imageReveal 1s ease-out 1s forwards;
+        }
+
+        .faq-image img:hover {
+            transform: scale(1.05) rotateY(0deg);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(0, 123, 131, 0.3);
+            border-radius: 50%;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-dot:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-dot:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .floating-dot:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        @keyframes slideInFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes imageReveal {
+            to {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .faq-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 40px 30px;
+            }
+
+            .faq-text h2 {
+                text-align: center;
+            }
+
+            .faq-question {
+                padding: 20px;
+                font-size: 15px;
+            }
+
+            .faq-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .faq-container {
+                padding: 30px 20px;
+            }
+
+            .faq-question {
+                padding: 16px;
+            }
+        }
+    </style>
+
+<body>
+
+    <div class="top-bar">
+        <p>News :Importance of stethoscope</p>
+        <div class="top-links">
+            <a href="#">About Us</a>
+            <a href="#"> Contact Us</a>
+            <a href="#"></i> Careers</a>
+            <a href="#"></i> Blog</a>
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <header class="header">
+        <!-- Contact info section (en haut) -->
+        <div class="contact-info">
+            <div><strong><i class="fas fa-phone-alt"></i> Emergency 24 Hours</strong><br><br>+242 065648283</div>
+            <div><strong><i class="fas fa-envelope"></i> Send us a mail</strong><br><br>princiliaonani@gmail.com</div>
+            <div><strong><i class="fas fa-map-marker-alt"></i> Our location</strong><br><br>Brazzaville</div>
+            <div><strong><i class="fas fa-clock"></i> Working Hours</strong><br><br>Mon -sun 0:00 -19:00</div>
+        </div>
+
+        <!-- Logo section (en bas) -->
+        <!-- Conteneur général du header -->
+        <div class="header-container">
+            <!-- Logo section (en bas) -->
+            <div class="logo">
+                <h1>ONNI <span> <i class="fas fa-heartbeat"></i></span></h1><br>
+
+            </div>
+
+            
+            <nav class="menu">
+                <button class="menu-toggle" aria-label="Open Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="but">
+                    <li><a href="index.html" id="home">Home</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="departement.html">Departement</a></li>
+                    <li><a href="faq.html">FaQ</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="docteur.html" class="btn">Docteurs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <section id="faq">
+        <div class="faq-container">
+            <div class="floating-elements">
+                <div class="floating-dot"></div>
+                <div class="floating-dot"></div>
+                <div class="floating-dot"></div>
+            </div>
+
+            <div class="faq-text">
+                <h2 id="retour">Foire Aux Questions</h2>
+                <p class="faq-description">
+                    Vous avez des questions concernant nos services, nos consultations, ou nos modalités de
+                    prise en charge ? Voici quelques réponses aux questions fréquemment posées par nos patients.
+                </p>
+
+                <div class="faq-items">
+                    <div class="faq-item" data-faq="1">
+                        <div class="faq-question">
+                            <span>Comment prendre rendez-vous ?</span>
+                            <div class="faq-icon">+</div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Vous pouvez appeler notre secrétariat ou remplir le formulaire de contact en
+                                ligne.
+                                Notre équipe vous répondra dans les plus brefs délais pour confirmer votre
+                                rendez-vous.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-faq="2">
+                        <div class="faq-question">
+                            <span>Quels sont les horaires d'ouverture ?</span>
+                            <div class="faq-icon">+</div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Nous sommes ouverts tous les jours de 7h00 à 19h00, y compris le week-end.
+                                Ces horaires étendus nous permettent de répondre à vos besoins de soins.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-faq="3">
+                        <div class="faq-question">
+                            <span>Les urgences sont-elles prises en charge ?</span>
+                            <div class="faq-icon">+</div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Oui, un service d'urgence est disponible 24h/24. Notre équipe médicale est
+                                toujours prête à intervenir pour les situations d'urgence.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-image">
+                <img src="pi.avif" alt="Illustration FAQ - Équipe médicale professionnelle">
+            </div>
+        </div>
+    </section>
+
+    <section class="foot">
+        <footer>
+            <div class="foot-cent">
+                <div class="icon">
+
+                    <ul>
+                        <li> <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i> Facebook :
+                                @MedicalCircleCG</a></li>
+                        <li><a href="https://twitter.com/"></a><i class="fab fa-twitter"></i> Twitter :
+                            @MedCircle_CG</a></li>
+                        <li><a href="https://www.instagram.com/"></a><i class="fab fa-instagram"></i> Instagram
+                            :
+                            @medical_circle</a></li>
+                    </ul>
+                </div>
+                <div class="nv">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Service</a></li>
+                        <li><a href="#departement">Departement</a></li>
+
+                    </ul>
+
+                </div>
+
+                <div class="nv1">
+                    <li><a href="#faq">FaQ</a></li>
+                    <a href="contact.html" class="cta-button">contact</a>
+                    <li><a href="#">consultation</a></li>
+
+                </div>
+
+            </div>
+        </footer>
+    </section>
+    <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuList = document.querySelector('.menu ul');
+
+    menuToggle.addEventListener('click', () => {
+        menuList.classList.toggle('show');
+    });
+</script>
+
+
+
+
+</body>
+
+</html>
