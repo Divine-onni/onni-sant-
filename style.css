@@ -237,6 +237,20 @@ body{
         display: block;
     }
 }
+@media (min-width: 1500px) {
+  /* Ajustement pour très grands écrans comme le Zenbook Fold totalement déplié */
+  .menu ul {
+    justify-content: space-evenly;
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 1300px) and (min-width: 769px) {
+  .menu ul {
+    flex-direction: row;
+    font-size: 1.1rem;
+  }
+}
+
 
 
 .header-container {
